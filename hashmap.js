@@ -16,6 +16,18 @@ class HashMap {
     }
 
     /**
+     * Returns a filled hashmap created from the iterable. If the object
+     * is an array, it should contain subarrays such as [key, value]. If it
+     * is an object, every entry should be key: value
+     * @param {[[string, any]] | Object} obj
+     * @returns {HashMap}
+     */
+    static from(obj) {
+        if (Array.isArray(obj)) return this.#fromArray(obj);
+        else return this.#fromObject(obj);
+    }
+
+    /**
      * Sets the key to the specified value
      * @param {string} key The key for the value
      * @param {any} value The value to be stored
@@ -166,6 +178,25 @@ class HashMap {
         for (let entry of entries) {
             this.set(entry[0], entry[1]);
         }
+    }
+
+    static #fromArray(arr) {
+        const map = new HashMap();
+        while (map.#capacity < arr.length)
+            map.#capacity += map.#initialCapacity;
+        map.clear();
+        for (let entry of arr) {
+            map.set(entry[0], entry[1]);
+        }
+        return map;
+    }
+
+    static #fromObject(obj) {
+        const arr = [];
+        for (let property in obj) {
+            arr.push([property, obj[property]]);
+        }
+        return this.#fromArray(arr);
     }
 }
 

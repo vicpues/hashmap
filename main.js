@@ -79,3 +79,22 @@ console.log(table.entries());
 console.log();
 
 console.log(table.clear().entries(), table.length); // [] 0
+console.log();
+
+const fruits = [
+    ["grape", "sweet"],
+    ["melon", "sweet"],
+    ["lemon", "sour"],
+    ["tomato", "umami"],
+];
+console.log(HashMap.from(fruits).keys()); // [ 'melon', 'tomato', 'grape', 'lemon' ]
+console.log();
+
+const fish = {
+    tuna: "ocean",
+    catfish: "river",
+    trout: "river",
+    salmon: "both",
+};
+console.log(HashMap.from(fish).keys()); // [ 'tuna', 'salmon', 'trout', 'catfish' ]
+console.log();
