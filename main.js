@@ -37,3 +37,5 @@ console.log(table.remove("gazelle")); // false
 console.log();
 
 console.log(table.length); // 6
+
+console.log(table.clear().length); // 0

@@ -1,7 +1,8 @@
 const LinkedList = require("./linked-list");
 
 class HashMap {
-    #capacity = 17;
+    #initialCapacity = 17;
+    #capacity = this.#initialCapacity;
     #loadFactor = 0.8;
     #length = 0;
     #buckets = Array.from({ length: this.#capacity }, () => new Bucket());
@@ -76,6 +77,17 @@ class HashMap {
         bucket.removeAt(index);
         this.#length--;
         return true;
+    }
+
+    /** Clears all the buckets and resets capacity */
+    clear() {
+        this.#capacity = this.#initialCapacity;
+        this.#length = 0;
+        this.#buckets = Array.from(
+            { length: this.#capacity },
+            () => new Bucket(),
+        );
+        return this;
     }
 
     // PRIVATE METHODS
