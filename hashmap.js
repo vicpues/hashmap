@@ -3,7 +3,7 @@ const LinkedList = require("./linked-list");
 class HashMap {
     #initialCapacity = 17;
     #capacity = this.#initialCapacity;
-    #loadFactor = 0.8;
+    #loadFactor = 0.75;
     #length = 0;
     #buckets = Array.from({ length: this.#capacity }, () => new Bucket());
 
