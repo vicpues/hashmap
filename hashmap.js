@@ -16,20 +16,6 @@ class HashMap {
     }
 
     /**
-     * Takes in a string and returns a hashed number
-     * @param {string} string The string to be hashed
-     */
-    hash(string) {
-        let hashCode = 0;
-        const primeNumber = 31;
-        for (let i = 0; i < string.length; i++) {
-            hashCode = primeNumber * hashCode + string.charCodeAt(i);
-            hashCode = hashCode % this.#capacity;
-        }
-        return hashCode;
-    }
-
-    /**
      * Sets the key to the specified value
      * @param {string} key The key for the value
      * @param {any} value The value to be stored
@@ -141,11 +127,25 @@ class HashMap {
     // PRIVATE METHODS
 
     /**
+     * Takes in a string and returns a hashed number
+     * @param {string} string The string to be hashed
+     */
+    #hash(string) {
+        let hashCode = 0;
+        const primeNumber = 31;
+        for (let i = 0; i < string.length; i++) {
+            hashCode = primeNumber * hashCode + string.charCodeAt(i);
+            hashCode = hashCode % this.#capacity;
+        }
+        return hashCode;
+    }
+
+    /**
      * Returns the bucket that contains a key
      * @param {string} key The key whose hash is the index of the bucket
      */
     #getBucket(key) {
-        const hashCode = this.hash(key);
+        const hashCode = this.#hash(key);
         return this.#buckets[hashCode];
     }
 
