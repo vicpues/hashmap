@@ -3,7 +3,12 @@ const LinkedList = require("./linked-list");
 class HashMap {
     #capacity = 17;
     #loadFactor = 0.8;
+    #length = 0;
     #buckets = Array.from({ length: this.#capacity }, () => new Bucket());
+
+    get length() {
+        return this.#length;
+    }
 
     /**
      * Takes in a string and returns a hashed number
@@ -29,8 +34,12 @@ class HashMap {
         const bucket = this.#getBucket(key);
         const index = bucket.find(key);
         const pair = { key, value };
-        if (index === null) bucket.append(pair);
-        else bucket.replaceAt(pair, index);
+        if (index === null) {
+            bucket.append(pair);
+            this.#length++;
+        } else {
+            bucket.replaceAt(pair, index);
+        }
         return this;
     }
 
@@ -65,6 +74,7 @@ class HashMap {
         const index = bucket.find(key);
         if (index === null) return false;
         bucket.removeAt(index);
+        this.#length--;
         return true;
     }
 
