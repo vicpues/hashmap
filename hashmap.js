@@ -79,14 +79,20 @@ class HashMap {
         return true;
     }
 
-    /** Clears all the buckets and resets capacity */
+    /** Clears all the entries */
     clear() {
-        this.#capacity = this.#initialCapacity;
         this.#length = 0;
         this.#buckets = Array.from(
             { length: this.#capacity },
             () => new Bucket(),
         );
+        return this;
+    }
+
+    /** Clears the entries and resets capacity */
+    reset() {
+        this.#capacity = this.#initialCapacity;
+        this.clear();
         return this;
     }
 
