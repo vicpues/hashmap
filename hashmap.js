@@ -45,6 +45,16 @@ class HashMap {
         return bucket.at(index).value;
     }
 
+    /**
+     * Returns `true` if the map contains a certain key, or `false` if it doesn't
+     * @param {string} key The key to find
+     */
+    has(key) {
+        const bucket = this.#getBucket(key);
+        if (bucket.find(key) === null) return false;
+        return true;
+    }
+
     // PRIVATE METHODS
 
     /**
