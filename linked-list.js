@@ -197,6 +197,18 @@ class LinkedList {
         return this;
     }
 
+    /** Returns an array with all the values in the list */
+    all() {
+        if (this.#isEmpty()) return [];
+        const arr = [];
+        let current = this.#head;
+        while (current !== null) {
+            arr.push(current.value);
+            current = current.nextNode;
+        }
+        return arr;
+    }
+
     // PRIVATE METHODS
 
     /** Returns `true` if the list is empty, otherwise returns `false` */
