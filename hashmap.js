@@ -92,7 +92,7 @@ class HashMap {
 
     /**
      * Returns an array with every key in the map
-     * @returns {Array<string>|Array<null>}
+     * @returns {string[]}
      */
     keys() {
         const arr = [];
