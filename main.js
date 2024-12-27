@@ -24,3 +24,6 @@ console.log(table.get("dragon!")); // null
 
 table.set("Elephant", "leaves AND grass");
 console.log(table.get("Elephant")); // leaves AND grass
+
+console.log(table.has("Zebra")); // true
+console.log(table.has("dragon")); // false
