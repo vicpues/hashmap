@@ -120,6 +120,22 @@ class HashMap {
         return arr.flat();
     }
 
+    /**
+     * Returns an array of arrays with every entry in the map, wherein each
+     * array [0] is the key and [1] is its value
+     * @returns {[string, any]}
+     */
+    entries() {
+        const arr = [];
+        if (this.#length === 0) return arr;
+        for (let bucket of this.#buckets) {
+            const items = bucket.all();
+            const entries = items.map((entry) => [entry.key, entry.value]);
+            arr.push(entries);
+        }
+        return arr.flat();
+    }
+
     // PRIVATE METHODS
 
     /**

@@ -45,4 +45,7 @@ console.log();
 console.log(table.values()); // [ 'meat', 'grass', 'leaves AND grass', 'leaves', 'grass', 'meat' ]
 console.log();
 
+console.log(table.entries()); // [ [ 'cheetah', 'meat' ], [ 'gnu', 'grass' ], [ 'Elephant', 'leaves AND grass' ], [ 'Giraffe', 'leaves' ], [ 'Zebra', 'grass' ], [ 'lion', 'meat' ] ]
+console.log();
+
 console.log(table.clear().length); // 0
