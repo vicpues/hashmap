@@ -178,9 +178,10 @@ class LinkedList {
      */
     removeAt(index) {
         this.#indexHandler(index);
-        this.#size--;
         const node = this.#nodeAt(index);
-        node.prevNode.nextNode = node.nextNode;
+        this.#size--;
+        if (this.#isEmpty) [this.#head, this.#tail] = [null, null];
+        else node.prevNode.nextNode = node.nextNode;
         return this;
     }
 
