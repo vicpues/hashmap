@@ -35,13 +35,15 @@ class HashMap {
      * @param {any} value The value to be stored
      */
     set(key, value) {
-        // TODO: grow buckets if reaching loadfactor
+        if (!this.has(key)) {
+            this.#length++;
+            this.#checkGrowth();
+        }
         const bucket = this.#getBucket(key);
         const index = bucket.find(key);
         const pair = { key, value };
         if (index === null) {
             bucket.append(pair);
-            this.#length++;
         } else {
             bucket.replaceAt(pair, index);
         }
@@ -145,6 +147,25 @@ class HashMap {
     #getBucket(key) {
         const hashCode = this.hash(key);
         return this.#buckets[hashCode];
+    }
+
+    /** Checks if the map is at capacity, and rebuilds it if it is */
+    #checkGrowth() {
+        const maxItems = this.#capacity * this.#loadFactor;
+        if (this.#length > maxItems) {
+            this.#grow();
+            this.#length++;
+        }
+    }
+
+    /** Rebuilds the hashmap at double the size */
+    #grow() {
+        const entries = this.entries();
+        this.#capacity = this.#capacity + this.#initialCapacity;
+        this.clear();
+        for (let entry of entries) {
+            this.set(entry[0], entry[1]);
+        }
     }
 }
 
