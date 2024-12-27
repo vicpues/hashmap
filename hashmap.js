@@ -90,6 +90,21 @@ class HashMap {
         return this;
     }
 
+    /**
+     * Returns an array with every key in the map
+     * @returns {Array<string>|Array<null>}
+     */
+    keys() {
+        const arr = [];
+        if (this.#length === 0) return arr;
+        for (let bucket of this.#buckets) {
+            let items = bucket.all();
+            const keys = items.map((item) => item.key);
+            arr.push(keys);
+        }
+        return arr.flat();
+    }
+
     // PRIVATE METHODS
 
     /**
