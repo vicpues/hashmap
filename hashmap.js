@@ -95,14 +95,9 @@ class HashMap {
      * @returns {string[]}
      */
     keys() {
-        const arr = [];
-        if (this.#length === 0) return arr;
-        for (let bucket of this.#buckets) {
-            let items = bucket.all();
-            const keys = items.map((item) => item.key);
-            arr.push(keys);
-        }
-        return arr.flat();
+        const entries = this.entries();
+        const keys = entries.map((entry) => entry[0]);
+        return keys;
     }
 
     /**
@@ -110,14 +105,9 @@ class HashMap {
      * @returns {Array}
      */
     values() {
-        const arr = [];
-        if (this.#length === 0) return arr;
-        for (let bucket of this.#buckets) {
-            let items = bucket.all();
-            const values = items.map((item) => item.value);
-            arr.push(values);
-        }
-        return arr.flat();
+        const entries = this.entries();
+        const values = entries.map((entry) => entry[1]);
+        return values;
     }
 
     /**
