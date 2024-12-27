@@ -2,7 +2,7 @@
 
 A basic hashmap module for The Odin Project's [fullstack javascript course](https://www.theodinproject.com/lessons/javascript-hashmap).
 
-The implementation is an ES6 class {HashMap} exported as a CommonJS module.
+The implementation is an ES6 class {HashMap} exported as a CommonJS module. Each bucket in the map is an extension of my previous [linked list module](https://github.com/vicpues/linked-lists), with some overrides and bugfixes applied.
 
 Properties:
 
