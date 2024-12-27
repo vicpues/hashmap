@@ -85,8 +85,8 @@ class LinkedList {
     /** Deletes the last item of the list and returns its value*/
     pop() {
         if (this.#isEmpty()) return null;
-        this.#size--;
         const node = this.#tail;
+        this.#size--;
         const newTail = this.#tail.prevNode;
         newTail.nextNode = null;
         this.#tail = newTail;
@@ -96,8 +96,8 @@ class LinkedList {
     /** Deletes the first item of the list and returns its value */
     shift() {
         if (this.#isEmpty()) return null;
-        this.#size--;
         const node = this.#head;
+        this.#size--;
         const newHead = this.#head.nextNode;
         newHead.prevNode = null;
         this.#head = newHead;
