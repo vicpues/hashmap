@@ -105,6 +105,21 @@ class HashMap {
         return arr.flat();
     }
 
+    /**
+     * Returns an array with all the values in the map
+     * @returns {Array}
+     */
+    values() {
+        const arr = [];
+        if (this.#length === 0) return arr;
+        for (let bucket of this.#buckets) {
+            let items = bucket.all();
+            const values = items.map((item) => item.value);
+            arr.push(values);
+        }
+        return arr.flat();
+    }
+
     // PRIVATE METHODS
 
     /**

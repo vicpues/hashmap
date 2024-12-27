@@ -42,4 +42,7 @@ console.log();
 console.log(table.keys()); // [ 'cheetah', 'gnu', 'Elephant', 'Giraffe', 'Zebra', 'lion' ]
 console.log();
 
+console.log(table.values()); // [ 'meat', 'grass', 'leaves AND grass', 'leaves', 'grass', 'meat' ]
+console.log();
+
 console.log(table.clear().length); // 0
