@@ -121,13 +121,18 @@ class LinkedList {
     /**
      * Returns the index of the specified value, or `null` if it's not in the list.
      * @param {any} value The value we're searching for
+     * @param {Function} callback Optional function to apply to both values before comparing them
      */
-    find(value) {
+    find(value, callback = null) {
         if (this.#isEmpty()) return null;
         let current = this.#head;
         let index = 0;
-        while (current.nextNode !== null) {
-            if (current.value === value) return index;
+        while (current !== null) {
+            if (callback) {
+                if (callback(current.value) === callback(value)) return index;
+            } else if (current.value === value) {
+                return index;
+            }
             current = current.nextNode;
             index++;
         }
