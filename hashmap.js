@@ -11,6 +11,10 @@ class HashMap {
         return this.#length;
     }
 
+    get load() {
+        return this.#length / this.#capacity;
+    }
+
     /**
      * Takes in a string and returns a hashed number
      * @param {string} string The string to be hashed
