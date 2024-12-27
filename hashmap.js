@@ -55,6 +55,19 @@ class HashMap {
         return true;
     }
 
+    /**
+     * Remove the item with the specified key. If the key is found and
+     * removed, returns `true`. If it isn't found, returns `false`.
+     * @param {string} key The key in question
+     */
+    remove(key) {
+        const bucket = this.#getBucket(key);
+        const index = bucket.find(key);
+        if (index === null) return false;
+        bucket.removeAt(index);
+        return true;
+    }
+
     // PRIVATE METHODS
 
     /**
