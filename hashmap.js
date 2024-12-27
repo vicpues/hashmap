@@ -7,10 +7,14 @@ class HashMap {
     #length = 0;
     #buckets = Array.from({ length: this.#capacity }, () => new Bucket());
 
+    /** How many entries there are in the map */
     get length() {
         return this.#length;
     }
 
+    /** The fraction used out of the current capacity of the map.
+     * When the load approaches the private loadFactor, the map will grow.
+     */
     get load() {
         return this.#length / this.#capacity;
     }
